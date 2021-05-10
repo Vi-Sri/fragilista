@@ -9,8 +9,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run unit and linting tests
-      run: make test-all
+    - name: Run unit tests
+      run: make test-unit
+    
+    - name: Run linting tests
+      run: make test-lint
     
     - name: clean
       run: make clean

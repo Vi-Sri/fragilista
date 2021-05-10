@@ -47,10 +47,10 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
 
-lint: ## check style with flake8
+test-lint: test-requirements ## check style with flake8
 	flake8 fragilista tests
 
-test: ## run tests quickly with the default Python
+test-unit: test-requirements ## run tests quickly with the default Python
 	pytest
 
 test-all: ## run tests on every Python version with tox
@@ -80,6 +80,10 @@ dist: clean ## builds source and wheel package
 	python setup.py sdist
 	python setup.py bdist_wheel
 	ls -l dist
+
+test-requirements: clean
+	python3 -m pip install pytest
+	python3 -m pip install flake8
 
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
