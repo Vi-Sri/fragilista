@@ -10,4 +10,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run unit and linting tests
-      run: tox
+      run: make test-all
+    
+    - name: clean
+      run: make clean
